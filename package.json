@@ -1,0 +1,19 @@
+{
+  "name": "share-button",
+  "main": "share-button.js",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulkinlan/share-button.git"
+  },
+  "author": "Paul Kinlan <paul.kinlan@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/paulkinlan/share-button/issues"
+  },
+  "homepage": "https://github.com/paulkinlan/share-button#readme",
+  "files": [
+    "share-button.js",
+    "share-button.html"
+  ]
+}
