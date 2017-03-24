@@ -1,0 +1,17 @@
+{
+  "name": "share-button",
+  "license": "Apache-2.0",
+  "authors": [
+    "Paul Kinlan <paul.kinlan@gmail.com>"
+  ],
+  "keywords": [
+    "web-components",
+    "custom-element",
+    "vanilla-js"
+  ],
+  "main": [
+    "share-button.js",
+    "share-button.html"
+  ],
+  "version": "0.1.0"
+}
