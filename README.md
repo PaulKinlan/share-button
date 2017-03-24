@@ -55,7 +55,9 @@ of `buttons` will be used in the display of the share-button
 -->
 ```html
 <share-button>
-  <img src="">
+  <img 
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+    style="width: 64px; height: 64px;">
 </share-button>
 ```
 
