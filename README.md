@@ -106,6 +106,42 @@ opened UI of the element.
 </share-button>
 ```
 
+### Use a custom image for the copy button
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="share-button.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button><img 
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+    style="width: 25px; height: 25px;" slot='clipboard'></share-button>
+```
+
+### Use a custom image for the android button
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="share-button.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button><img 
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+    style="width: 25px; height: 25px;" slot='android'></share-button>
+```
+
+
+
 ## Add a custom share button
 
 Any element hosted in the custom element that does not have a `slot` attribute
