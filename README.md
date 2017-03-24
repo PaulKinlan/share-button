@@ -12,7 +12,7 @@ sharing URLs.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="twitter-share-button.html">
+    <link rel="import" href="share-button.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -31,7 +31,7 @@ of `buttons` will be used in the display of the share-button
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="air-horner.html">
+    <link rel="import" href="share-button.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -47,7 +47,7 @@ of `buttons` will be used in the display of the share-button
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="air-horner.html">
+    <link rel="import" href="share-button.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -63,7 +63,7 @@ of `buttons` will be used in the display of the share-button
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="air-horner.html">
+    <link rel="import" href="share-button.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
