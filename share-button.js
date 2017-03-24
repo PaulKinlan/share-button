@@ -113,21 +113,18 @@ class ShareButton extends HTMLElement {
       div.buttons {
         overflow-x: auto;
         max-height: 2em;
-        min-height: 1em;
         display: flex;
-        background-color: red;
         flex-direction: row;
       }
       
-      #buttonSlot {
-         min-height: 1em;
+      slot[name=buttons] {
+        min-height: 1em;
+        background-color: red;
       }
-      
-      #buttonSlot::slotted(button) {
-         min-height: 1em;
-        background-color: blue;
+
+      slot[name=buttons]:empty {
+        display: none;
       }
-     
                       
       #android.visible {
         display: block !important;
@@ -158,7 +155,7 @@ class ShareButton extends HTMLElement {
               <button id="android"></button>  
             </div>
             <div class="buttons">
-              <slot name="buttons" id="buttonSlot"></slot>
+              <slot name="buttons"></slot>
             </div>
            </div>
         </div>`;
@@ -175,7 +172,7 @@ class ShareButton extends HTMLElement {
     const root = this.attachShadow({mode:'open'});
     root.appendChild(this.template.content.cloneNode(true));
     
-    // Handle click events
+    // Handle click events on the main element.
     root.host.addEventListener('click', e => {
       e.preventDefault();
       this.toggleOverlay();
@@ -188,7 +185,7 @@ class ShareButton extends HTMLElement {
     // Dismiss the overlay on any interaction on the page
     
     document.documentElement.addEventListener('click', e => {
-      if(e.target != this.rootElement){
+      if(e.target != root.host){
         this.hide();
       }
     }, true);
@@ -258,7 +255,7 @@ class ShareButton extends HTMLElement {
       return result;
     }
     catch(error) {
-      
+      console.error(error);
     }
     
     return false;
