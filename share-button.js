@@ -30,17 +30,11 @@ class ShareButton extends HTMLElement {
       let styles = document.createElement('style');
       styles.innerHTML = `:host {
         display: inline-block;
-              
-        --share-url-background: initial;
-
         --share-button-border: outset buttonface 2px;
         --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
  
         --overlay-background-color: white;
         --overlay-background-border: 1px solid #ccc;
-        
-        --copy-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg) center/18px no-repeat;
-        --android-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg) center/18px no-repeat;
       }
            
       .visible {
@@ -92,22 +86,26 @@ class ShareButton extends HTMLElement {
       }
       
       #copy {
-        background: var(--copy-button-background);
         height: 25px;
         width: 25px;
-        color: transparent;
-        margin: 1em 0.5em;
+        margin: 0 0 0 0.5em;
         padding: 1em;
+      }
+
+      #copy img {
+        transform: translate(-50%, -50%);
       }
       
       #android {
         display: none;
-        background: var(--android-button-background);
-        min-height: 25px;
-        min-width: 25px;
-        color: transparent;
-        margin: 1em 0.5em;
+        height: 25px;
+        width: 25px;
+        margin: 0 0 0 0.5em;
         padding: 1em;
+      }
+
+      #android img {
+        transform: translate(-50%, -50%);
       }
       
       div.buttons {
@@ -137,10 +135,6 @@ class ShareButton extends HTMLElement {
       }
       
       #url {
-        background-color: var(--share-url-background);
-        border: solid 1px #dcdcdc;
-        border-radius: 4px;
-        box-shadow: inset 1px 1px #adadad;
         width: 100%;
         padding: 0.5em 0.5em;
       }`;
@@ -151,8 +145,8 @@ class ShareButton extends HTMLElement {
           <div id="overlay">
             <div id="urlbar">
               <input type="url" id="url" />
-              <button id="copy">Copy to Clipboard</button>
-              <button id="android"></button>  
+              <button id="copy" aria-label="Copy to clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></button>
+              <button id="android" aria-label="Share on Android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></button>  
             </div>
             <div class="buttons">
               <slot name="buttons"></slot>
