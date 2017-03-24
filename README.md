@@ -68,6 +68,7 @@ opened UI of the element.
 </share-button>
 ```
 
+### Use a custom image
 <!--
 ```
 <custom-element-demo>
