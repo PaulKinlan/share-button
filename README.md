@@ -1,9 +1,15 @@
 # Share Button
 
 The Share Button web component provides a simple and customizable interface for
-sharing URLs.
+sharing URLs on the web and is specially designed for when you don't have a 
+visible URL bar in your web app (for example if it is running in full screen)
 
-* Add customizable buttons for you preferred providers
+* Provides access to the URL bar so that you can view and edit it.
+* Gives the ability to programitcally copy the url on to the clipboard
+* Will use `navigator.share` API if it is available on the users system
+* Allows access to the Android Intent sharing system if the user is on Android
+* Passes control to the developer for the social networks to share to by giving
+  the author the ability customizable buttons for you preferred providers
 
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
@@ -22,10 +28,29 @@ sharing URLs.
 <share-button></share-button>
 ```
 
-## Customise the button UI
+# Customizing the button
 
-Any element hosted in the custom element that does not have a `slot` attribute
-of `buttons` will be used in the display of the share-button
+As the author of the page there are a number of extensions that you have control
+over.
+
+1. Providing your own visible UI to the element
+2. Adding your own controls for your preferred social networks or actions
+3. Styling the element so that it fits in with your site
+
+## Control the visible UI of the element
+
+You have the ability to control how the button appears to the user. The button
+is the first thing that the users sees and it encapsulates all of the
+functionality that the share-button offers.
+
+By default, any element that is hosted inside the `<share-button>` and does not
+have an assigned `slot name` will be reprojected to the visible portion of
+the element.
+
+Elements that have a slot `name` of `buttons` will be hosted inside the fully
+opened UI of the element.
+
+### Use a custom label
 
 <!--
 ```
@@ -61,6 +86,8 @@ of `buttons` will be used in the display of the share-button
 </share-button>
 ```
 
+### Use a custom label and image
+
 <!--
 ```
 <custom-element-demo>
@@ -79,6 +106,9 @@ of `buttons` will be used in the display of the share-button
 ```
 
 ## Add a custom share button
+
+Any element hosted in the custom element that does not have a `slot` attribute
+of `buttons` will be used in the display of the share-button
 
 Custom share buttons can be positioned inside the share button by applying 
 the slot="buttons" attribute to the element.
