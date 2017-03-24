@@ -119,6 +119,18 @@ class ShareButton extends HTMLElement {
         background-color: red;
       }
 
+      slot[name=clipboard]::slotted(*) {
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
+
+      slot[name=android]::slotted(*) {
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
+
       slot[name=buttons]:empty {
         display: none;
       }
@@ -147,8 +159,8 @@ class ShareButton extends HTMLElement {
       overlay.innerHTML = `
         <div id="urlbar">
           <input type="url" id="url" />
-          <button id="copy" aria-label="Copy to clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></button>
-          <button id="android" aria-label="Share on Android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></button>  
+          <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></slot></button>
+          <button id="android" aria-label="Share on Android"><slot name="android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></slot></button>  
         </div>
         <div class="buttons">
           <slot name="buttons"></slot>
