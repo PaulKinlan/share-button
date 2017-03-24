@@ -2,6 +2,7 @@
 <script src="../share-button.js"></script>
 <script src="../../buttons/twitter-share-button/twitter-share-button.js"></script>
 
+
 <share-button></share-button>
 
 <!-- Project "Share" as button label -->
@@ -20,3 +21,29 @@
 <share-button>
   <twitter-share-button slot="buttons" text="Testing attribute" href="https://test.com"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg"></twitter-share-button>
 </share-button>
+
+<h1>Styling</h1>
+
+<style>
+#styletest1 {
+  background-color: steelblue;
+  border-radius: 50% 50%;
+}
+</style>
+<share-button id="styletest1">
+  Share circle
+</share-button>
+
+<br>
+<style>
+#styletest2 {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
+</style>
+<share-button id="styletest2">
+  Share button
+</share-button>
+
+

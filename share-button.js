@@ -30,7 +30,6 @@ class ShareButton extends HTMLElement {
       let styles = document.createElement('style');
       styles.innerHTML = `:host {
         display: inline-block;
-        --share-button-border: outset buttonface 2px;
         --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
  
         --overlay-background-color: white;
@@ -43,7 +42,7 @@ class ShareButton extends HTMLElement {
       
       #share-btn {
         background: initial;
-        border: var(--share-button-border);
+        border: none;
         min-height: 25px;
         min-width: 25px;
         width: 100%;
@@ -138,23 +137,25 @@ class ShareButton extends HTMLElement {
         width: 100%;
         padding: 0.5em 0.5em;
       }`;
-      let body = document.createElement('div');
-      body.innerHTML = `
-        <div>
-          <button id="share-btn"><slot></slot></button>
-          <div id="overlay">
-            <div id="urlbar">
-              <input type="url" id="url" />
-              <button id="copy" aria-label="Copy to clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></button>
-              <button id="android" aria-label="Share on Android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></button>  
-            </div>
-            <div class="buttons">
-              <slot name="buttons"></slot>
-            </div>
-           </div>
+
+      let button = document.createElement('button');
+      button.id='share-btn';
+      button.innerHTML='<slot></slot>';
+      
+      let overlay = document.createElement('div');
+      overlay.id = 'overlay';
+      overlay.innerHTML = `
+        <div id="urlbar">
+          <input type="url" id="url" />
+          <button id="copy" aria-label="Copy to clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></button>
+          <button id="android" aria-label="Share on Android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></button>  
+        </div>
+        <div class="buttons">
+          <slot name="buttons"></slot>
         </div>`;
       this._template.content.appendChild(styles);
-      this._template.content.appendChild(body);
+      this._template.content.appendChild(button);
+      this._template.content.appendChild(overlay);
       
       return this._template;
     }
