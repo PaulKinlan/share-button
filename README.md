@@ -122,3 +122,5 @@ the slot="buttons" attribute to the element.
     </share-button>
 
 You are in control of the actions that the user takes on these elements.
+
+## Styling the element
