@@ -42,8 +42,13 @@
 
 <style>
 #styletest1 {
-  background-color: steelblue;
-  border-radius: 50% 50%;
+  --share-button-border: none;
+  --share-button-appearance: radio !important;
+  --share-button-color: steelblue;
+  --share-button-background: steelblue;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 </style>
 <share-button id="styletest1">
@@ -62,4 +67,13 @@
   Share button
 </share-button>
 
-
+<br>
+<style>
+#styletest3 {
+  --share-button-background: steelblue !important;
+  --share-button-border-radius:50% 50%;
+}
+</style>
+<share-button id="styletest3">
+  Border Radius
+</share-button>

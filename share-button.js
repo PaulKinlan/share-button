@@ -31,7 +31,10 @@ class ShareButton extends HTMLElement {
       styles.innerHTML = `:host {
         display: inline-block;
         --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
- 
+        --share-button-border: 2px outset buttonface;
+        --share-button-appearance: button;
+        --share-button-border-radius: initial;
+        --share-button-color: initial;
         --overlay-background-color: white;
         --overlay-background-border: 1px solid #ccc;
       }
@@ -41,8 +44,13 @@ class ShareButton extends HTMLElement {
       }
       
       #share-btn {
-        background: initial;
-        border: none;
+        -webkit-appearance: var(--share-button-appearance);
+        -moz-appearance: var(--share-button-appearance);
+        appearance: var(--share-button-appearance);
+        background: var(--share-button-background);
+        border: var(--share-button-border);
+        border-radius: var(--share-button-border-radius);
+        color: var(--share-button-color);
         min-height: 25px;
         min-width: 25px;
         width: 100%;
@@ -50,11 +58,15 @@ class ShareButton extends HTMLElement {
         flex-direction: row;
         align-items: center;
       }
-      
-      :host-context(:empty) #share-btn {
+
+      :host(:not(:empty)) #share-btn {
+        background: none;
+      }
+
+      :host(.empty) #share-btn {
         background: var(--share-button-background);
       }
-            
+          
       #overlay {
         background-color: var(--overlay-background-color);
         display: none;
@@ -176,41 +188,61 @@ class ShareButton extends HTMLElement {
   constructor() {
     super();
     
-    const root = this.attachShadow({mode:'open'});
-    root.appendChild(this.template.content.cloneNode(true));
-    
+    this.attachShadow({mode:'open'});
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+  }
+
+  _childrenAdded() {
+    // Check to see if it is empty and apply class
+    let childNodeCount = this.children.length;
+    let slotElementCount = this.querySelectorAll('[slot]').length;
+
+    if(childNodeCount == slotElementCount && childNodeCount > 0) {
+      this.classList.add('empty');
+    }
+    else {
+      this.classList.remove('empty');
+    }
+  }
+
+  connectedCallback() {
+    let root = this.shadowRoot;
+
+    this.shareBtn = root.getElementById('share-btn');
+    this.overlay = root.getElementById('overlay');
+    this.url = root.getElementById('url');
+    this.copy = root.getElementById('copy');
+    this.android = root.getElementById('android');
+        
+    let observer = new MutationObserver(this._childrenAdded.bind(this));
+    observer.observe(this, {childList: true});  
+
     // Handle click events on the main element.
-    root.host.addEventListener('click', e => {
+    this.addEventListener('click', e => {
       e.preventDefault();
       this.toggleOverlay();
       return false;
     }, false);
     
     // Dismiss the overlay on any keypress.
-    root.host.addEventListener('keypress', e => this.toggleOverlay());
+    this.addEventListener('keypress', e => this.toggleOverlay());
     
     // Dismiss the overlay on any interaction on the page
-    
+
     document.documentElement.addEventListener('click', e => {
       if(e.target != root.host){
         this.hide();
       }
     }, true);
-    
-    this.shareBtn = root.getElementById('share-btn');
-    this.overlay = root.getElementById('overlay');
-    
-    this.copy = root.getElementById('copy');
+        
     this.copy.addEventListener('click', e => {
       e.stopPropagation();
       e.preventDefault();
       e.cancelBubble = true;
       
       this.copyUrl();
- 
     });
     
-    this.android = root.getElementById('android');
     this.android.addEventListener('click', e => {
       const fallbackUrl = encodeURIComponent("https://twitter.com/intent/tweet");
       
@@ -220,9 +252,7 @@ class ShareButton extends HTMLElement {
     if(navigator.userAgent.indexOf('Android') > 0) {
       this.android.classList.add('visible');
     }
-    
-    this.url = root.getElementById('url');
-    
+        
     this.url.addEventListener('click', e => {
 
       e.stopPropagation();
@@ -246,6 +276,9 @@ class ShareButton extends HTMLElement {
     if(document.queryCommandSupported && document.queryCommandSupported('copy')) {
         this.copy.classList.toggle('visible');
     }
+
+
+
   }
   
   copyUrl() {
