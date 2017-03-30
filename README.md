@@ -222,6 +222,8 @@ to be an actual `<button>`.
 #styletest1 {
   --share-button-background: steelblue !important;
   --share-button-border-radius:50% 50%;
+  width: 100px;
+  height: 100px;
 }
 </style>
 <share-button id="styletest1">
