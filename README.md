@@ -140,8 +140,6 @@ opened UI of the element.
     style="width: 25px; height: 25px;" slot='android'></share-button>
 ```
 
-
-
 ## Add a custom share button
 
 Any element hosted in the custom element that does not have a `slot` attribute
@@ -158,6 +156,29 @@ the slot="buttons" attribute to the element.
     </share-button>
 
 You are in control of the actions that the user takes on these elements.
+
+## Control the URL to be shared
+
+By default the current page's URL is the URL that will be populated in the
+share box and will be used in all sharing operations. You can control this 
+yourself by supplying your own `href` attribute.
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="share-button.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button href='https://paul.kinlan.me/'>
+  Share
+</share-button>
+```
+
 
 ## Styling the element
 
@@ -217,7 +238,6 @@ to be an actual `<button>`.
 ```
 -->
 ```html
-<br>
 <style>
 #styletest1 {
   --share-button-background: steelblue !important;
