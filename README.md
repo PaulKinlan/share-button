@@ -160,3 +160,71 @@ the slot="buttons" attribute to the element.
 You are in control of the actions that the user takes on these elements.
 
 ## Styling the element
+
+There are a number of things that you can style. You can style the button
+that is visible to the user and you can also style the overlay that is shown
+to the user once they have taken the action to "share"
+
+### Style the button
+
+The `<share-button>` exposes a number of CSS variables that give you control
+over how the button is presented to the user.
+
+Below are the defaults for the variables and you have the ability to override
+them as you see fit. By default the button that the user will click attempts
+to be an actual `<button>`.
+
+```css
+/* 
+  --share-button-background lets you control the background of the button
+  default: the 'share' icon.
+*/
+--share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
+
+/* 
+  --share-button-border controls border on the button
+  default: 2px outset buttonface;
+*/
+--share-button-border: 2px outset buttonface;
+
+/* 
+  --share-button-appearance controls the rendering of the element
+  default: button;
+*/
+--share-button-appearance: button;
+
+/* 
+  --share-button-border-radius provides access to border-radius on the button
+  default: initial
+*/
+--share-button-border-radius: initial;
+
+/* 
+  --share-button-color lets you control `color` of the button element.
+  default: initial
+*/
+--share-button-color: initial;
+```
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="share-button.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<br>
+<style>
+#styletest1 {
+  --share-button-background: steelblue !important;
+  --share-button-border-radius:50% 50%;
+}
+</style>
+<share-button id="styletest1">
+  Share
+</share-button>
+```
