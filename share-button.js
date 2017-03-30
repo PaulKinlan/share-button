@@ -272,6 +272,14 @@ class ShareButton extends HTMLElement {
         window.location = e.currentTarget.value;
       }
     });
+
+    window.addEventListener('hashchange', e => {
+      this.url.value = window.location;
+    });
+
+    window.addEventListener('popstate', e => {
+      this.url.value = window.location;
+    });
     
     this.url.value = window.location;
     
