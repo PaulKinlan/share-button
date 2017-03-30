@@ -15,6 +15,9 @@
 
 class ShareButton extends HTMLElement {
 
+  static get observedAttributes() {return ['href']; }
+
+
   get shareData() {
     return {
       url: this.url.value,
@@ -192,6 +195,14 @@ class ShareButton extends HTMLElement {
     
     this.attachShadow({mode:'open'});
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    
+    let root = this.shadowRoot;
+
+    this.shareBtn = root.getElementById('share-btn');
+    this.overlay = root.getElementById('overlay');
+    this.url = root.getElementById('url');
+    this.copy = root.getElementById('copy');
+    this.android = root.getElementById('android');
   }
 
   _childrenAdded() {
@@ -209,12 +220,6 @@ class ShareButton extends HTMLElement {
 
   connectedCallback() {
     let root = this.shadowRoot;
-
-    this.shareBtn = root.getElementById('share-btn');
-    this.overlay = root.getElementById('overlay');
-    this.url = root.getElementById('url');
-    this.copy = root.getElementById('copy');
-    this.android = root.getElementById('android');
         
     let observer = new MutationObserver(this._childrenAdded.bind(this));
     observer.observe(this, {childList: true});  
@@ -273,22 +278,38 @@ class ShareButton extends HTMLElement {
       }
     });
 
-    window.addEventListener('hashchange', e => {
-      this.url.value = window.location;
-    });
-
-    window.addEventListener('popstate', e => {
-      this.url.value = window.location;
-    });
+    window.addEventListener('hashchange', e => this.updateUrl(window.location));
+    window.addEventListener('popstate', e => this.updateUrl(window.location));
     
-    this.url.value = window.location;
+    this.updateUrl(this.href || window.location);
     
     if(document.queryCommandSupported && document.queryCommandSupported('copy')) {
         this.copy.classList.toggle('visible');
     }
+  }
 
+  attributeChangedCallback(attr, oldValue, newValue) {
+    if (attr == 'href' && oldValue != newValue) {
+      this.href = newValue;
+    }
+  }
 
+  get href() {
+    return this.getAttribute('href');
+  }
 
+  set href(val) {
+    if(val) {
+      this.updateUrl(val);
+      this.setAttribute('href', val);
+    } else {
+      this.updateUrl(window.location);
+      this.removeAttribute('href');
+    }
+  }
+
+  updateUrl(url) {
+    this.url.value = url;
   }
   
   copyUrl() {
