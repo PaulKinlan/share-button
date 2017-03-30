@@ -30,7 +30,7 @@ class ShareButton extends HTMLElement {
       let styles = document.createElement('style');
       styles.innerHTML = `:host {
         display: inline-flex;
-        --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
+        --share-button-background: none;   
         --share-button-border: 2px outset buttonface;
         --share-button-appearance: button;
         --share-button-border-radius: initial;
@@ -49,7 +49,6 @@ class ShareButton extends HTMLElement {
         -webkit-appearance: var(--share-button-appearance);
         -moz-appearance: var(--share-button-appearance);
         appearance: var(--share-button-appearance);
-        background: var(--share-button-background);
         border: var(--share-button-border);
         border-radius: var(--share-button-border-radius);
         color: var(--share-button-color);
@@ -62,10 +61,11 @@ class ShareButton extends HTMLElement {
       }
 
       :host(:not(:empty)) #share-btn {
-        background: none;
+        background: var(--share-button-background);
       }
 
-      :host(.empty) #share-btn {
+      :host(:empty) #share-btn, :host(.empty) #share-btn {
+        --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
         background: var(--share-button-background);
       }
           
