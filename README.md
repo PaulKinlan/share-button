@@ -155,13 +155,25 @@ of `buttons` will be used in the display of the share-button
 
 Custom share buttons can be positioned inside the share button by applying 
 the slot="buttons" attribute to the element.
-
-    <share-button>
-      <button slot="buttons">Twitter</button>
-      <button slot="buttons">Fb</button>
-      <button slot="buttons">WhatsApp</button>
-      <button slot="buttons">G+</button>
-    </share-button>
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button>
+  <button slot="buttons">Twitter</button>
+  <button slot="buttons">Fb</button>
+  <button slot="buttons">WhatsApp</button>
+  <button slot="buttons">G+</button>
+</share-button>
+```
 
 You are in control of the actions that the user takes on these elements.
 
