@@ -17,184 +17,18 @@ class ShareButton extends HTMLElement {
 
   static get observedAttributes() {return ['href']; }
 
-
   get shareData() {
     return {
       url: this.url.value,
       text: undefined
     };
   }
-  
-  get template() {
-    if(this._template) return this._template;
-    else {
-      this._template = document.createDocumentFragment();
-      
-      let styles = document.createElement('style');
-      styles.innerHTML = `:host {
-        display: inline-flex;
-        --share-button-background: none;   
-        --share-button-border: 2px outset buttonface;
-        --share-button-appearance: button;
-        --share-button-border-radius: initial;
-        --share-button-color: initial;
-        --overlay-background-color: white;
-        --overlay-background-border: 1px solid #ccc;
-        min-width: 25px;
-        min-height: 25px;
-      }
-           
-      .visible {
-        display: block !important;
-      }
-      
-      #share-btn {
-        -webkit-appearance: var(--share-button-appearance);
-        -moz-appearance: var(--share-button-appearance);
-        appearance: var(--share-button-appearance);
-        border: var(--share-button-border);
-        border-radius: var(--share-button-border-radius);
-        color: var(--share-button-color);
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 1;
-      }
 
-      :host(:not(:empty)) #share-btn {
-        background: var(--share-button-background);
-      }
-
-      :host(:empty) #share-btn, :host(.empty) #share-btn {
-        --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
-        background: var(--share-button-background);
-      }
-          
-      #overlay {
-        background-color: var(--overlay-background-color);
-        display: none;
-        padding: 1em;
-        top: 0;
-        margin: auto;
-        left: 0;
-        right: 0;
-        max-width: 300px;
-      }
-      
-      #overlay.visible {
-        display: inline-block !important;
-        border: var(--overlay-background-border);
-        position: fixed;
-      }
-      
-      #services {
-        padding-left: 0;
-      }
-      
-      #copy {
-        display: none;
-      }
-      
-      #copy.visible {
-        display: block !important;
-      }
-      
-      #copy {
-        height: 25px;
-        width: 25px;
-        margin: 0 0 0 0.5em;
-        padding: 1em;
-      }
-
-      #copy img {
-        transform: translate(-50%, -50%);
-      }
-      
-      #android {
-        display: none;
-        height: 25px;
-        width: 25px;
-        margin: 0 0 0 0.5em;
-        padding: 1em;
-      }
-
-      #android img {
-        transform: translate(-50%, -50%);
-      }
-      
-      div.buttons {
-        overflow-x: auto;
-        max-height: 2em;
-        display: flex;
-        flex-direction: row;
-      }
-      
-      slot[name=buttons] {
-        min-height: 1em;
-        background-color: red;
-      }
-
-      slot[name=clipboard]::slotted(*) {
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-      }
-
-      slot[name=android]::slotted(*) {
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-      }
-
-      slot[name=buttons]:empty {
-        display: none;
-      }
-                      
-      #android.visible {
-        display: block !important;
-      }
-      
-      #urlbar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-      
-      #url {
-        width: 100%;
-        padding: 0.5em 0.5em;
-      }`;
-
-      let button = document.createElement('button');
-      button.id='share-btn';
-      button.innerHTML='<slot></slot>';
-      
-      let overlay = document.createElement('div');
-      overlay.id = 'overlay';
-      overlay.innerHTML = `
-        <div id="urlbar">
-          <input type="url" id="url" />
-          <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></slot></button>
-          <button id="android" aria-label="Share on Android"><slot name="android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></slot></button>  
-        </div>
-        <div class="buttons">
-          <slot name="buttons"></slot>
-        </div>`;
-      this._template.appendChild(styles);
-      this._template.appendChild(button);
-      this._template.appendChild(overlay);
-      
-      return this._template;
-    }
-  }
-  
   constructor() {
     super();
     
     this.attachShadow({mode:'open'});
-    this.shadowRoot.appendChild(this.template);
+    this.shadowRoot.appendChild(this._createTemplate());
     
     let root = this.shadowRoot;
 
@@ -203,6 +37,170 @@ class ShareButton extends HTMLElement {
     this.url = root.getElementById('url');
     this.copy = root.getElementById('copy');
     this.android = root.getElementById('android');
+  }
+
+  
+  _createTemplate() {
+    const framgent = document.createDocumentFragment();
+      
+    let styles = document.createElement('style');
+    styles.innerHTML = `:host {
+      display: inline-flex;
+      --share-button-background: none;   
+      --share-button-border: 2px outset buttonface;
+      --share-button-appearance: button;
+      --share-button-border-radius: initial;
+      --share-button-color: initial;
+      --overlay-background-color: white;
+      --overlay-background-border: 1px solid #ccc;
+      min-width: 25px;
+      min-height: 25px;
+    }
+          
+    .visible {
+      display: block !important;
+    }
+    
+    #share-btn {
+      -webkit-appearance: var(--share-button-appearance);
+      -moz-appearance: var(--share-button-appearance);
+      appearance: var(--share-button-appearance);
+      border: var(--share-button-border);
+      border-radius: var(--share-button-border-radius);
+      color: var(--share-button-color);
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 1;
+    }
+
+    :host(:not(:empty)) #share-btn {
+      background: var(--share-button-background);
+    }
+
+    :host(:empty) #share-btn, :host(.empty) #share-btn {
+      --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
+      background: var(--share-button-background);
+    }
+        
+    #overlay {
+      background-color: var(--overlay-background-color);
+      display: none;
+      padding: 1em;
+      top: 0;
+      margin: auto;
+      left: 0;
+      right: 0;
+      max-width: 300px;
+    }
+    
+    #overlay.visible {
+      display: inline-block !important;
+      border: var(--overlay-background-border);
+      position: fixed;
+    }
+    
+    #services {
+      padding-left: 0;
+    }
+    
+    #copy {
+      display: none;
+    }
+    
+    #copy.visible {
+      display: block !important;
+    }
+    
+    #copy {
+      height: 25px;
+      width: 25px;
+      margin: 0 0 0 0.5em;
+      padding: 1em;
+    }
+
+    #copy img {
+      transform: translate(-50%, -50%);
+    }
+    
+    #android {
+      display: none;
+      height: 25px;
+      width: 25px;
+      margin: 0 0 0 0.5em;
+      padding: 1em;
+    }
+
+    #android img {
+      transform: translate(-50%, -50%);
+    }
+    
+    div.buttons {
+      overflow-x: auto;
+      max-height: 2em;
+      display: flex;
+      flex-direction: row;
+    }
+    
+    slot[name=buttons] {
+      min-height: 1em;
+      background-color: red;
+    }
+
+    slot[name=clipboard]::slotted(*) {
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+
+    slot[name=android]::slotted(*) {
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+
+    slot[name=buttons]:empty {
+      display: none;
+    }
+                    
+    #android.visible {
+      display: block !important;
+    }
+    
+    #urlbar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    #url {
+      width: 100%;
+      padding: 0.5em 0.5em;
+    }`;
+
+    const button = document.createElement('button');
+    button.id='share-btn';
+    button.innerHTML='<slot></slot>';
+    
+    const overlay = document.createElement('div');
+    overlay.id = 'overlay';
+    overlay.innerHTML = `
+      <div id="urlbar">
+        <input type="url" id="url" />
+        <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></slot></button>
+        <button id="android" aria-label="Share on Android"><slot name="android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></slot></button>  
+      </div>
+      <div class="buttons">
+        <slot name="buttons"></slot>
+      </div>`;
+
+    framgent.appendChild(styles);
+    framgent.appendChild(button);
+    framgent.appendChild(overlay);
+    
+    return framgent;
   }
 
   _childrenAdded() {
