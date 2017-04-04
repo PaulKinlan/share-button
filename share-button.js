@@ -15,7 +15,7 @@
 
 class ShareButton extends HTMLElement {
 
-  static get observedAttributes() {return ['href']; }
+  static get observedAttributes() { return ['href', 'text']; }
 
   constructor() {
     super();
@@ -279,6 +279,16 @@ class ShareButton extends HTMLElement {
     }
     
     this.updateUrl(this.href);
+
+    if(!!this.text == false) {
+      // text attribute is not defined, pull meta data.
+      const titleEl = document.getElementsByTagName('title');
+      const title = (!!titleEl) ? titleEl.innerText : undefined;
+      const descriptionEl = document.querySelector('meta[name=description]')
+      const description = (!!descriptionEl) ? descriptionEl.content : undefined;
+
+      this.text = description || title;
+    }
     
     if(document.queryCommandSupported && document.queryCommandSupported('copy')) {
         this.copy.classList.toggle('visible');
@@ -286,8 +296,9 @@ class ShareButton extends HTMLElement {
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (attr == 'href' && oldValue != newValue) {
-      this.href = newValue;
+    // Only the watched attributes will get changed.
+    if (oldValue != newValue) {
+      this[attr] = newValue;
     }
   }
 
@@ -305,8 +316,26 @@ class ShareButton extends HTMLElement {
     }
   }
 
+  get text() {
+    return this.getAttribute('text');
+  }
+
+  set text(val) {
+    if(val) {
+      this.updateText(val);
+      this.setAttribute('text', val);
+    } else {
+      this.updateText();
+      this.removeAttribute('text');
+    }
+  }
+
   updateUrl(url) {
     this.url.value = url;
+  }
+
+  updateText(text) {
+    
   }
   
   copyUrl() {

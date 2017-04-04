@@ -200,6 +200,30 @@ yourself by supplying your own `href` attribute.
 </share-button>
 ```
 
+## Control the text to be shared
+
+By default the current page's meta description or title will be available to
+consumers of the element and also to embedded buttons. You can control this by
+yourself by supplying your own `text` attribute.
+
+Note: there is no visible output.
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button text="oi">
+  Custom text
+</share-button>
+```
+
 
 ## Styling the element
 
