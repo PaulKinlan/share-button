@@ -17,13 +17,6 @@ class ShareButton extends HTMLElement {
 
   static get observedAttributes() {return ['href']; }
 
-  get shareData() {
-    return {
-      url: this.url.value,
-      text: undefined
-    };
-  }
-
   constructor() {
     super();
     
@@ -280,8 +273,12 @@ class ShareButton extends HTMLElement {
 
     window.addEventListener('hashchange', e => this.updateUrl(window.location));
     window.addEventListener('popstate', e => this.updateUrl(window.location));
+
+    if(!!this.href == false) {
+      this.href = window.location;
+    }
     
-    this.updateUrl(this.href || window.location);
+    this.updateUrl(this.href);
     
     if(document.queryCommandSupported && document.queryCommandSupported('copy')) {
         this.copy.classList.toggle('visible');
