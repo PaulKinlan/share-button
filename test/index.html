@@ -1,6 +1,6 @@
 <title>This is a test</title>
 <script src="../share-button.js"></script>
-<script src="../../buttons/twitter-share-button/twitter-share-button.js"></script>
+<script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
 
 
 <share-button></share-button>
@@ -32,7 +32,13 @@
 
 <!-- Element projection -->
 <share-button>
-  <twitter-share-button slot="buttons" text="Testing attribute" href="https://test.com"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg"></twitter-share-button>
+  <twitter-share-button 
+    slot="buttons" 
+    text="Testing attribute"
+    href="https://test.com">
+    <img 
+       src="https://paul.kinlan.me/images/twitter.png">
+  </twitter-share-button>
 </share-button>
 
 <h1>Custom icons</h1>

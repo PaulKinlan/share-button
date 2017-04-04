@@ -132,14 +132,13 @@ class ShareButton extends HTMLElement {
     
     div.buttons {
       overflow-x: auto;
-      max-height: 2em;
       display: flex;
       flex-direction: row;
     }
     
-    slot[name=buttons] {
+    slot[name=buttons]::slotted(*) {
       min-height: 1em;
-      background-color: red;
+      margin-top: 1em;
     }
 
     slot[name=clipboard]::slotted(*) {

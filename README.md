@@ -155,6 +155,7 @@ of `buttons` will be used in the display of the share-button
 
 Custom share buttons can be positioned inside the share button by applying 
 the slot="buttons" attribute to the element.
+
 <!--
 ```
 <custom-element-demo>
@@ -176,6 +177,40 @@ the slot="buttons" attribute to the element.
 ```
 
 You are in control of the actions that the user takes on these elements.
+
+## Add a compatible `<twitter-share-button>`
+
+Any element hosted in the custom element that does not have a `slot` attribute
+of `buttons` will be used in the display of the share-button.
+
+Custom share buttons can also be dedicated web components that are compatible
+with the share-button API. For example, the `<twitter-share-button>`.
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
+<share-button>
+  <twitter-share-button 
+    slot="buttons" 
+    text="Testing attribute"
+    href="https://test.com">
+    <img 
+       src="https://paul.kinlan.me/images/twitter.png">
+  </twitter-share-button>
+</share-button>
+```
+
 
 ## Control the URL to be shared
 
@@ -223,7 +258,6 @@ Note: there is no visible output.
   Custom text
 </share-button>
 ```
-
 
 ## Styling the element
 
