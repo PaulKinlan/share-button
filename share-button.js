@@ -210,10 +210,6 @@ class ShareButton extends HTMLElement {
     let childNodeCount = this.children.length;
     let slotElementCount = this.querySelectorAll('[slot]').length;
 
-    console.log(childNodeCount, slotElementCount)
-    console.log(this.innerHTML);
-    console.log(this);
-
     if(childNodeCount == slotElementCount && childNodeCount > 0) {
       this.classList.add('empty');
     }
@@ -225,13 +221,8 @@ class ShareButton extends HTMLElement {
   connectedCallback() {
     let root = this.shadowRoot;
 
-    let childNodeCount = this.children.length;
-    let slotElementCount = this.querySelectorAll('[slot]').length;
-
-    console.log(childNodeCount, slotElementCount)
-    console.log(this.innerHTML);
-    console.log(this);
-        
+    // This check is needed because sometimes all the nodes are already here.
+    this._childrenAdded();
     let observer = new MutationObserver(this._childrenAdded.bind(this));
     observer.observe(this, {childList: true});  
 
