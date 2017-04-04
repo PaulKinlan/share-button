@@ -124,6 +124,8 @@ opened UI of the element.
 ```
 
 ### Use a custom image for the android button
+Note: this will only work on an Android device.
+
 <!--
 ```
 <custom-element-demo>
