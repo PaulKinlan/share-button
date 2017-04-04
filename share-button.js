@@ -28,7 +28,7 @@ class ShareButton extends HTMLElement {
   get template() {
     if(this._template) return this._template;
     else {
-      this._template = document.createElement('template');
+      this._template = document.createDocumentFragment();
       
       let styles = document.createElement('style');
       styles.innerHTML = `:host {
@@ -182,9 +182,9 @@ class ShareButton extends HTMLElement {
         <div class="buttons">
           <slot name="buttons"></slot>
         </div>`;
-      this._template.content.appendChild(styles);
-      this._template.content.appendChild(button);
-      this._template.content.appendChild(overlay);
+      this._template.appendChild(styles);
+      this._template.appendChild(button);
+      this._template.appendChild(overlay);
       
       return this._template;
     }
@@ -194,7 +194,7 @@ class ShareButton extends HTMLElement {
     super();
     
     this.attachShadow({mode:'open'});
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    this.shadowRoot.appendChild(this.template);
     
     let root = this.shadowRoot;
 
