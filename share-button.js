@@ -224,6 +224,13 @@ class ShareButton extends HTMLElement {
 
   connectedCallback() {
     let root = this.shadowRoot;
+
+    let childNodeCount = this.children.length;
+    let slotElementCount = this.querySelectorAll('[slot]').length;
+
+    console.log(childNodeCount, slotElementCount)
+    console.log(this.innerHTML);
+    console.log(this);
         
     let observer = new MutationObserver(this._childrenAdded.bind(this));
     observer.observe(this, {childList: true});  
