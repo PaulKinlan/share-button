@@ -210,6 +210,10 @@ class ShareButton extends HTMLElement {
     let childNodeCount = this.children.length;
     let slotElementCount = this.querySelectorAll('[slot]').length;
 
+    console.log(childNodeCount, slotElementCount)
+    console.log(this.innerHTML);
+    console.log(this);
+
     if(childNodeCount == slotElementCount && childNodeCount > 0) {
       this.classList.add('empty');
     }
