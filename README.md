@@ -18,6 +18,7 @@ visible URL bar in your web app (for example if it is running in full screen)
 ```
 <custom-element-demo>
   <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
@@ -56,7 +57,8 @@ opened UI of the element.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -73,7 +75,8 @@ opened UI of the element.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -93,7 +96,8 @@ opened UI of the element.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -111,7 +115,8 @@ opened UI of the element.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -130,7 +135,8 @@ Note: this will only work on an Android device.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -169,7 +175,8 @@ yourself by supplying your own `href` attribute.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -233,7 +240,8 @@ to be an actual `<button>`.
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
