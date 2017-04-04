@@ -12,13 +12,13 @@ visible URL bar in your web app (for example if it is running in full screen)
   the author the ability customizable buttons for you preferred providers
 
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/paulkinlan/share-button)
 
 <!--
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="share-button.html">
+    <script src="share-button.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
