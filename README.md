@@ -188,7 +188,7 @@ with the share-button API. For example, the `<twitter-share-button>`.
 
 <!--
 ```
-<custom-element-demo>
+<custom-element-demo height=200px>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
