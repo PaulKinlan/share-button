@@ -62,11 +62,14 @@ class ShareButton extends HTMLElement {
       border-radius: var(--share-button-border-radius);
       color: var(--share-button-color);
       width: 100%;
+      height: inherit;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       flex-shrink: 1;
+      text-transform: inherit;
+      font: inherit;
     }
 
     :host(:not(:empty)) #share-btn {
