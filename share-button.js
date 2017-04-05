@@ -200,10 +200,17 @@ class ShareButton extends HTMLElement {
 
   _childrenAdded() {
     // Check to see if it is empty and apply class
-    let childNodeCount = this.children.length;
     let slotElementCount = this.querySelectorAll('[slot]').length;
 
-    if(childNodeCount == slotElementCount && childNodeCount > 0) {
+    let walk=document.createTreeWalker(this, NodeFilter.SHOW_TEXT,null,false);
+    let node;
+    let textFound = false;
+    while(node=walk.nextNode()) {
+      textFound = /\S/.test(node.textContent);
+      if(textFound) break;
+    }
+
+    if(textFound == false && slotElementCount > 0) {
       this.classList.add('empty');
     }
     else {
