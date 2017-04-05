@@ -253,9 +253,13 @@ class ShareButton extends HTMLElement {
     });
     
     this.android.addEventListener('click', e => {
-      const fallbackUrl = encodeURIComponent("https://twitter.com/intent/tweet");
-      
-      window.location = `intent:#Intent;action=android.intent.action.SEND;type=text/plain;S.android.intent.extra.TEXT=${encodeURIComponent(this.url.value)};S.android.intent.extra.SUBJECT=${document.title};S.browser_fallback_url=${fallbackUrl}?text=${encodeURIComponent(document.title)}&${encodeURIComponent(window.location)};end`;
+      if(!!navigator.share) {
+        navigator.share({ title: this.text, url: this.href });
+      }
+      else {
+        const fallbackUrl = encodeURIComponent("https://twitter.com/intent/tweet");      
+        window.location = `intent:#Intent;action=android.intent.action.SEND;type=text/plain;S.android.intent.extra.TEXT=${encodeURIComponent(this.url.value)};S.android.intent.extra.SUBJECT=${document.title};S.browser_fallback_url=${fallbackUrl}?text=${encodeURIComponent(document.title)}&${encodeURIComponent(window.location)};end`;
+      }
     });     
     
     if(navigator.userAgent.indexOf('Android') > 0) {
