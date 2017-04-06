@@ -31,7 +31,6 @@ class ShareButton extends HTMLElement {
     this.copy = root.getElementById('copy');
     this.android = root.getElementById('android');
   }
-
   
   _createTemplate() {
     const framgent = document.createDocumentFragment();
@@ -39,7 +38,7 @@ class ShareButton extends HTMLElement {
     let styles = document.createElement('style');
     styles.innerHTML = `:host {
       display: inline-flex;
-      --share-button-background: none;   
+      --share-button-background-color: initial;   
       --share-button-border: 2px outset buttonface;
       --share-button-appearance: button;
       --share-button-border-radius: initial;
@@ -71,16 +70,7 @@ class ShareButton extends HTMLElement {
       text-transform: inherit;
       font: inherit;
     }
-
-    :host(:not(:empty)) #share-btn {
-      background: var(--share-button-background);
-    }
-
-    :host(:empty) #share-btn, :host(.empty) #share-btn {
-      --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
-      background: var(--share-button-background);
-    }
-        
+     
     #overlay {
       background-color: var(--overlay-background-color);
       display: none;
@@ -177,7 +167,7 @@ class ShareButton extends HTMLElement {
 
     const button = document.createElement('button');
     button.id='share-btn';
-    button.innerHTML='<slot></slot>';
+    button.innerHTML='<slot><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg"></slot>';
     
     const overlay = document.createElement('div');
     overlay.id = 'overlay';
@@ -198,33 +188,16 @@ class ShareButton extends HTMLElement {
     return framgent;
   }
 
-  _childrenAdded() {
-    // Check to see if it is empty and apply class
-    let slotElementCount = this.querySelectorAll('[slot]').length;
-
-    let walk=document.createTreeWalker(this, NodeFilter.SHOW_TEXT,null,false);
-    let node;
-    let textFound = false;
-    while(node=walk.nextNode()) {
-      textFound = /\S/.test(node.textContent);
-      if(textFound) break;
-    }
-
-    if(textFound == false && slotElementCount > 0) {
-      this.classList.add('empty');
-    }
-    else {
-      this.classList.remove('empty');
-    }
-  }
-
   connectedCallback() {
     let root = this.shadowRoot;
 
-    // This check is needed because sometimes all the nodes are already here.
-    this._childrenAdded();
-    let observer = new MutationObserver(this._childrenAdded.bind(this));
-    observer.observe(this, {childList: true});  
+    // Sets the background color of the button because we are going to futz it.
+    const defaultButtonStyle = window.getComputedStyle(this.shareBtn);
+    const defaultStyle = window.getComputedStyle(this);
+    const initialBgColor = defaultStyle.getPropertyValue('--share-button-background-color');
+
+    this.style.setProperty('--share-button-background-color', initialBgColor || defaultButtonStyle.backgroundColor);
+    this.shareBtn.style.backgroundColor = 'var(--share-button-background-color)';
 
     // Handle click events on the main element.
     this.addEventListener('click', e => {
