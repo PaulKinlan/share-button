@@ -126,13 +126,16 @@ class ShareButton extends HTMLElement {
     }
 
     slot[name=clipboard]::slotted(*) {
-      transform: translate(-50%, -50%);
       width: 100%;
       height: 100%;
     }
 
     slot[name=android]::slotted(*) {
-      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+
+    slot[name=mailto]::slotted(*) {
       width: 100%;
       height: 100%;
     }
