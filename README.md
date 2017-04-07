@@ -259,6 +259,63 @@ Note: there is no visible output.
 </share-button>
 ```
 
+## Disable the default copy button
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button copy=disabled href="https://paul.kinlan.me/">
+  Copy disabled
+</share-button>
+```
+
+## Disable the default android share button
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button android=disabled href="https://paul.kinlan.me/">
+  Android Share disabled
+</share-button>
+```
+
+## Disable the default mailto button
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button mailto=disabled href="https://paul.kinlan.me/">
+  mailto disabled
+</share-button>
+```
+
+
 ## Styling the element
 
 There are a number of things that you can style. You can style the button
