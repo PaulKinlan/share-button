@@ -104,26 +104,15 @@ class ShareButton extends HTMLElement {
       margin: 0 0 0 0.5em;
     }
 
-    #copy img {
-      transform: translate(-50%, -50%);
-    }
-
     #mailto {
       margin: 0 0 0 0.5em;
     }
     
     #android {
       display: none;
-      height: 25px;
-      width: 25px;
       margin: 0 0 0 0.5em;
-      padding: 1em;
     }
 
-    #android img {
-      transform: translate(-50%, -50%);
-    }
-    
     div.buttons {
       overflow-x: auto;
       display: flex;
@@ -177,7 +166,7 @@ class ShareButton extends HTMLElement {
         <input type="url" id="url" />
         <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 1H4C3 1 2 2 2 3v14h2V3h12V1zm3 4H8C7 5 6 6 6 7v14c0 1 1 2 2 2h11c1 0 2-1 2-2V7c0-1-1-2-2-2zm0 16H8V7h11v14z"/></svg></slot></button>
         <button id="mailto" aria-lable="Mail to"><slot name="mailto"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg></slot></button>
-        <button id="android" aria-label="Share on Android"><slot name="android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></slot></button>  
+        <button id="android" aria-label="Share on Android"><slot name="android"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6 18c0 .6.5 1 1 1h1v3.5c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5V19h2v3.5c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5V19h1c.6 0 1-.5 1-1V8H6v10zM3.5 8C2.7 8 2 8.7 2 9.5v7c0 .8.7 1.5 1.5 1.5S5 17.3 5 16.5v-7C5 8.7 4.3 8 3.5 8zm17 0c-.8 0-1.5.7-1.5 1.5v7c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-7c0-.8-.7-1.5-1.5-1.5zm-5-5.8L16.8 1c.2-.3.2-.6 0-.8-.2-.2-.5-.2-.7 0l-1.3 1.4C13.7 1.2 13 1 12 1c-1 0-2 .2-2.7.6L7.8 0H7v1l1.5 1C7 3.2 6 5 6 7h12c0-2-1-3.8-2.5-4.8zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg></slot></button>  
       </div>
       <div class="buttons">
         <slot name="buttons"></slot>
