@@ -105,13 +105,37 @@ class ShareButton extends HTMLElement {
       margin: 0 0 0 0.5em;
     }
 
+    :host([copy="disabled"]) #copy {
+      display:none;
+    }
+
+    :host([copy="disabled"]) #copy.visible {
+      display:none !important;
+    }
+
     #mailto {
       margin: 0 0 0 0.5em;
+    }
+
+    :host([mailto="disabled"]) #mailto {
+      display:none;
     }
     
     #android {
       display: none;
       margin: 0 0 0 0.5em;
+    }
+
+    #android.visible {
+      display: block !important;
+    }
+
+    :host([android="disabled"]) #android {
+      display:none;
+    }
+
+    :host([android="disabled"]) #android.visible {
+      display:none !important;
     }
 
     div.buttons {
@@ -142,10 +166,6 @@ class ShareButton extends HTMLElement {
 
     slot[name=buttons]:empty {
       display: none;
-    }
-                    
-    #android.visible {
-      display: block !important;
     }
     
     #urlbar {
