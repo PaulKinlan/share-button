@@ -101,10 +101,7 @@ class ShareButton extends HTMLElement {
     }
     
     #copy {
-      height: 25px;
-      width: 25px;
       margin: 0 0 0 0.5em;
-      padding: 1em;
     }
 
     #copy img {
@@ -178,7 +175,7 @@ class ShareButton extends HTMLElement {
     overlay.innerHTML = `
       <div id="urlbar">
         <input type="url" id="url" />
-        <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_content_copy_black_24px.svg"></slot></button>
+        <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 1H4C3 1 2 2 2 3v14h2V3h12V1zm3 4H8C7 5 6 6 6 7v14c0 1 1 2 2 2h11c1 0 2-1 2-2V7c0-1-1-2-2-2zm0 16H8V7h11v14z"/></svg></slot></button>
         <button id="mailto" aria-lable="Mail to"><slot name="mailto"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg></slot></button>
         <button id="android" aria-label="Share on Android"><slot name="android"><img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_android_black_24px.svg"></slot></button>  
       </div>
