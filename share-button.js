@@ -110,6 +110,10 @@ class ShareButton extends HTMLElement {
     #copy img {
       transform: translate(-50%, -50%);
     }
+
+    #mailto {
+      margin: 0 0 0 0.5em;
+    }
     
     #android {
       display: none;
