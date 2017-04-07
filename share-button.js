@@ -29,6 +29,7 @@ class ShareButton extends HTMLElement {
     this.overlay = root.getElementById('overlay');
     this.url = root.getElementById('url');
     this.copy = root.getElementById('copy');
+    this.mailto = root.getElementById('mailto');
     this.android = root.getElementById('android');
   }
   
@@ -215,6 +216,14 @@ class ShareButton extends HTMLElement {
       
       this.copyUrl();
     });
+
+    this.mailto.addEventListener('click', e => {
+      e.stopPropagation();
+      e.preventDefault();
+      e.cancelBubble = true;
+      
+      this.mailUrl();
+    });
     
     this.android.addEventListener('click', e => {
       if(!!navigator.share) {
@@ -311,8 +320,10 @@ class ShareButton extends HTMLElement {
     this.url.value = url;
   }
 
-  updateText(text) {
-    
+  updateText(text) {}
+
+  mailUrl() {
+    window.open(`mailto:?body=${encodeURIComponent(this.href)}&subject=${encodeURIComponent(this.text)}`);
   }
   
   copyUrl() {
