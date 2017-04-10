@@ -21,7 +21,7 @@ class ShareButton extends HTMLElement {
     super();
     
     this.attachShadow({mode:'open'});
-    this.shadowRoot.appendChild(this._createTemplate());
+    this.shadowRoot.appendChild(ShareButton.template.cloneNode(true));
     
     let root = this.shadowRoot;
 
@@ -33,8 +33,10 @@ class ShareButton extends HTMLElement {
     this.android = root.getElementById('android');
   }
   
-  _createTemplate() {
-    const framgent = document.createDocumentFragment();
+  static get template() {
+    if(this.fragment) return this.fragment;
+
+    const fragment = document.createDocumentFragment();
       
     let styles = document.createElement('style');
     styles.innerHTML = `:host {
@@ -197,11 +199,12 @@ class ShareButton extends HTMLElement {
         <slot name="buttons"></slot>
       </div>`;
 
-    framgent.appendChild(styles);
-    framgent.appendChild(button);
-    framgent.appendChild(overlay);
+    fragment.appendChild(styles);
+    fragment.appendChild(button);
+    fragment.appendChild(overlay);
     
-    return framgent;
+    this.fragment = fragment;
+    return fragment;
   }
 
   connectedCallback() {
