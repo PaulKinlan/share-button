@@ -156,6 +156,10 @@ of `buttons` will be used in the display of the share-button
 Custom share buttons can be positioned inside the share button by applying 
 the slot="buttons" attribute to the element.
 
+Note: white space will get projected into the default slot if you have one
+element already assigned to a named slot. Remove the white space and the 
+`:empty` filter will apply correctly.
+
 <!--
 ```
 <custom-element-demo>
@@ -168,12 +172,10 @@ the slot="buttons" attribute to the element.
 ```
 -->
 ```html
-<share-button>
-  <button slot="buttons">Twitter</button>
+<share-button><button slot="buttons">Twitter</button>
   <button slot="buttons">Fb</button>
   <button slot="buttons">WhatsApp</button>
-  <button slot="buttons">G+</button>
-</share-button>
+  <button slot="buttons">G+</button></share-button>
 ```
 
 You are in control of the actions that the user takes on these elements.
@@ -185,6 +187,10 @@ of `buttons` will be used in the display of the share-button.
 
 Custom share buttons can also be dedicated web components that are compatible
 with the share-button API. For example, the `<twitter-share-button>`.
+
+Note: white space will get projected into the default slot if you have one
+element already assigned to a named slot. Remove the white space and the 
+`:empty` filter will apply correctly.
 
 <!--
 ```
@@ -200,15 +206,13 @@ with the share-button API. For example, the `<twitter-share-button>`.
 -->
 ```html
 <script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
-<share-button>
-  <twitter-share-button 
+<share-button><twitter-share-button 
     slot="buttons" 
     text="Testing attribute"
     href="https://test.com">
     <img 
        src="https://paul.kinlan.me/images/twitter.png">
-  </twitter-share-button>
-</share-button>
+  </twitter-share-button></share-button>
 ```
 
 
