@@ -37,41 +37,41 @@
 
 <!-- Project img element as button label -->
 <share-button>
-  <img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+  <img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 64px; height: 64px;">
 </share-button>
 
 <!-- Element projection -->
-<share-button><twitter-share-button 
-    slot="buttons" 
+<share-button><twitter-share-button
+    slot="buttons"
     text="Testing attribute"
     href="https://test.com">
-    <img 
+    <img
        src="https://paul.kinlan.me/images/twitter.png">
   </twitter-share-button></share-button>
 
 <!-- Element projection -->
-<share-button><twitter-share-button 
-    slot="buttons" 
+<share-button><twitter-share-button
+    slot="buttons"
     text="Testing attribute"
     href="https://test.com">
-    <img 
+    <img
        src="https://paul.kinlan.me/images/twitter.png">
   </twitter-share-button></share-button>
 
 <h1>Custom icons</h1>
 
-<share-button><img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 25px; height: 25px;" slot='clipboard'></share-button>
 
-<share-button><img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 25px; height: 25px;" slot='mailto'></share-button>
 
-<share-button><img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 25px; height: 25px;" slot='android'></share-button>
 
 <!-- Project "Share" as button label -->
@@ -121,3 +121,26 @@
 <share-button id="styletest3">
   Border Radius
 </share-button>
+
+<h1>Events</h1>
+
+<share-button id="eventUrlCopy">
+  Copy URL event
+</share-button>
+<script>
+eventUrlCopy.addEventListener('copy-url', e => alert(e));
+</script>
+
+<share-button id="eventUrlMail">
+  Mail URL event
+</share-button>
+<script>
+eventUrlMail.addEventListener('mail-url', e => alert(e));
+</script>
+
+<share-button id="eventUrlAndroid">
+  Android URL event
+</share-button>
+<script>
+eventUrlAndroid.addEventListener('share-url', e => alert(e));
+</script>

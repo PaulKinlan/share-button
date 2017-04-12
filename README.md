@@ -1,7 +1,7 @@
 # Share Button
 
 The Share Button web component provides a simple and customizable interface for
-sharing URLs on the web and is specially designed for when you don't have a 
+sharing URLs on the web and is specially designed for when you don't have a
 visible URL bar in your web app (for example if it is running in full screen)
 
 * Provides access to the URL bar so that you can view and edit it.
@@ -84,8 +84,8 @@ opened UI of the element.
 -->
 ```html
 <share-button>
-  <img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+  <img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 64px; height: 64px;">
 </share-button>
 ```
@@ -123,8 +123,8 @@ opened UI of the element.
 ```
 -->
 ```html
-<share-button><img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 25px; height: 25px;" slot='clipboard'></share-button>
 ```
 
@@ -143,8 +143,8 @@ Note: this will only work on an Android device.
 ```
 -->
 ```html
-<share-button><img 
-    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png" 
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
     style="width: 25px; height: 25px;" slot='android'></share-button>
 ```
 
@@ -153,11 +153,11 @@ Note: this will only work on an Android device.
 Any element hosted in the custom element that does not have a `slot` attribute
 of `buttons` will be used in the display of the share-button
 
-Custom share buttons can be positioned inside the share button by applying 
+Custom share buttons can be positioned inside the share button by applying
 the slot="buttons" attribute to the element.
 
 Note: white space will get projected into the default slot if you have one
-element already assigned to a named slot. Remove the white space and the 
+element already assigned to a named slot. Remove the white space and the
 `:empty` filter will apply correctly.
 
 <!--
@@ -189,7 +189,7 @@ Custom share buttons can also be dedicated web components that are compatible
 with the share-button API. For example, the `<twitter-share-button>`.
 
 Note: white space will get projected into the default slot if you have one
-element already assigned to a named slot. Remove the white space and the 
+element already assigned to a named slot. Remove the white space and the
 `:empty` filter will apply correctly.
 
 <!--
@@ -206,11 +206,11 @@ element already assigned to a named slot. Remove the white space and the
 -->
 ```html
 <script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
-<share-button><twitter-share-button 
-    slot="buttons" 
+<share-button><twitter-share-button
+    slot="buttons"
     text="Testing attribute"
     href="https://test.com">
-    <img 
+    <img
        src="https://paul.kinlan.me/images/twitter.png">
   </twitter-share-button></share-button>
 ```
@@ -219,7 +219,7 @@ element already assigned to a named slot. Remove the white space and the
 ## Control the URL to be shared
 
 By default the current page's URL is the URL that will be populated in the
-share box and will be used in all sharing operations. You can control this 
+share box and will be used in all sharing operations. You can control this
 yourself by supplying your own `href` attribute.
 
 <!--
@@ -319,6 +319,76 @@ Note: there is no visible output.
 </share-button>
 ```
 
+## Events
+
+There are a number of events based on a user's interactions with the element.
+
+You can listen for clipboard events, mailto events and native Android sharing
+events.
+
+### Listen to copy to clipboard event
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button id="eventUrlCopy">
+  Copy URL event
+</share-button>
+<script>
+eventUrlCopy.addEventListener('copy-url', e => alert(e));
+</script>
+```
+
+### Listen to mail event
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button id="eventUrlMail">
+  Mail URL event
+</share-button>
+<script>
+eventUrlMail.addEventListener('mail-url', e => alert(e));
+</script>
+```
+
+### Listen to native android share event
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="share-button.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<share-button id="eventUrlAndroid">
+  Android URL event
+</share-button>
+<script>
+eventUrlAndroid.addEventListener('share-url', e => alert(e));
+</script>
+```
 
 ## Styling the element
 
@@ -336,31 +406,31 @@ them as you see fit. By default the button that the user will click attempts
 to be an actual `<button>`.
 
 ```css
-/* 
+/*
   --share-button-background lets you control the background of the button
   default: the 'share' icon.
 */
 --share-button-background: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_share_black_24px.svg) center/18px no-repeat;
 
-/* 
+/*
   --share-button-border controls border on the button
   default: 2px outset buttonface;
 */
 --share-button-border: 2px outset buttonface;
 
-/* 
+/*
   --share-button-appearance controls the rendering of the element
   default: button;
 */
 --share-button-appearance: button;
 
-/* 
+/*
   --share-button-border-radius provides access to border-radius on the button
   default: initial
 */
 --share-button-border-radius: initial;
 
-/* 
+/*
   --share-button-color lets you control `color` of the button element.
   default: initial
 */
