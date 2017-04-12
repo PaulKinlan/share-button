@@ -1,7 +1,7 @@
 [Constructor]
 interface ShareButton : HTMLElement {
-    attribute unsigned DOMString href;
-    attribute unsigned DOMString text;
+    attribute DOMString href;
+    attribute DOMString text;
 
     static getter DocumentFragment template();
     static getter sequence<DOMString> observedAttributes();
