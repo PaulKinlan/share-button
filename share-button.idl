@@ -1,0 +1,16 @@
+[Constructor]
+interface ShareButton : HTMLElement {
+    attribute unsigned string href;
+    attribute unsigned string text;
+
+    static getter DocumentFragment template();
+    static getter sequence<DOMString> observedAttributes();
+
+    void updateUrl(DOMString url);
+    void updateText(DOMString text);
+    void copyUrl();
+    void mailUrl();
+    void hide();
+    void show();
+    void toggleOverlay();
+}
