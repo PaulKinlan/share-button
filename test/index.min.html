@@ -1,0 +1,146 @@
+<title>This is a test</title>
+<script src="../dist/share-button.min.js"></script>
+<script src="https://rawgit.com/PaulKinlan/twitter-share-button/master/twitter-share-button.js"></script>
+
+
+<share-button></share-button>
+
+<!-- Project "Share" as button label -->
+<share-button>
+  Share
+</share-button>
+
+<!-- Project "Share" as button label -->
+<share-button href="https://paul.kinlan.me/">
+  Custom href
+</share-button>
+
+<share-button copy=disabled href="https://paul.kinlan.me/">
+  copy disabled
+</share-button>
+
+<share-button android=disabled href="https://paul.kinlan.me/">
+  android disabled
+</share-button>
+
+<share-button mailto=disabled href="https://paul.kinlan.me/">
+  mailto disabled
+</share-button>
+
+<share-button text="oi">
+  Custom text
+</share-button>
+
+<share-button href="https://paul.kinlan.me/" text="test">
+  Custom href &amp; text
+</share-button>
+
+<!-- Project img element as button label -->
+<share-button>
+  <img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
+    style="width: 64px; height: 64px;">
+</share-button>
+
+<!-- Element projection -->
+<share-button><twitter-share-button
+    slot="buttons"
+    text="Testing attribute"
+    href="https://test.com">
+    <img
+       src="https://paul.kinlan.me/images/twitter.png">
+  </twitter-share-button></share-button>
+
+<!-- Element projection -->
+<share-button><twitter-share-button
+    slot="buttons"
+    text="Testing attribute"
+    href="https://test.com">
+    <img
+       src="https://paul.kinlan.me/images/twitter.png">
+  </twitter-share-button></share-button>
+
+<h1>Custom icons</h1>
+
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
+    style="width: 25px; height: 25px;" slot='clipboard'></share-button>
+
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
+    style="width: 25px; height: 25px;" slot='mailto'></share-button>
+
+<share-button><img
+    src="https://pbs.twimg.com/profile_images/2736788281/13811f0063041a72d7ea6ede7b89fedd_400x400.png"
+    style="width: 25px; height: 25px;" slot='android'></share-button>
+
+<!-- Project "Share" as button label -->
+<share-button>
+  Share
+</share-button>
+
+
+<h1>Styling</h1>
+
+<style>
+#styletest1 {
+  --share-button-border: none;
+  --share-button-appearance: radio !important;
+  --share-button-color: steelblue;
+  --share-button-background-color: steelblue;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+</style>
+<share-button id="styletest1">
+  Share circle
+</share-button>
+
+<br>
+<style>
+#styletest2 {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
+</style>
+<share-button id="styletest2">
+  Share button
+</share-button>
+
+<br>
+<style>
+#styletest3 {
+  --share-button-background-color: steelblue !important;
+  --share-button-border-radius:50% 50%;
+  width: 100px;
+  height: 100px;
+}
+</style>
+<share-button id="styletest3">
+  Border Radius
+</share-button>
+
+<h1>Events</h1>
+
+<share-button id="eventUrlCopy">
+  Copy URL event
+</share-button>
+<script>
+eventUrlCopy.addEventListener('copy-url', e => alert(e));
+</script>
+
+<share-button id="eventUrlMail">
+  Mail URL event
+</share-button>
+<script>
+eventUrlMail.addEventListener('mail-url', e => alert(e));
+</script>
+
+<share-button id="eventUrlAndroid">
+  Android URL event
+</share-button>
+<script>
+eventUrlAndroid.addEventListener('share-url', e => alert(e));
+</script>
