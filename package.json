@@ -15,5 +15,8 @@
   "files": [
     "share-button.js",
     "share-button.html"
-  ]
+  ],
+  "devDependencies": {
+    "babili": "0.0.12"
+  }
 }
