@@ -17,6 +17,11 @@
     "share-button.html"
   ],
   "devDependencies": {
-    "babili": "0.0.12"
+    "babili": "0.0.12",
+    "clean-css": "^4.0.12",
+    "html-minifier": "^3.4.3"
+  },
+  "scripts": {
+    "build": "cat share-button.js | node build/compress-css.js | node build/compress-html.js | babili > dist/share-button.min.js"
   }
 }

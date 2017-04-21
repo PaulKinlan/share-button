@@ -39,7 +39,7 @@ class ShareButton extends HTMLElement {
     const fragment = document.createDocumentFragment();
 
     let styles = document.createElement('style');
-    styles.innerHTML = `:host {
+    styles.innerHTML = `/*compress*/:host {
       display: inline-flex;
       --share-button-background-color: initial;
       --share-button-border: 2px outset buttonface;
@@ -179,7 +179,7 @@ class ShareButton extends HTMLElement {
     #url {
       width: 100%;
       padding: 0.5em 0.5em;
-    }`;
+    }/*endcompress*/`;
 
     const button = document.createElement('button');
     button.id='share-btn';
@@ -188,7 +188,7 @@ class ShareButton extends HTMLElement {
 
     const overlay = document.createElement('div');
     overlay.id = 'overlay';
-    overlay.innerHTML = `
+    overlay.innerHTML = `<!--compress-->
       <div id="urlbar">
         <input type="url" id="url" />
         <button id="copy" aria-label="Copy to clipboard"><slot name="clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 1H4C3 1 2 2 2 3v14h2V3h12V1zm3 4H8C7 5 6 6 6 7v14c0 1 1 2 2 2h11c1 0 2-1 2-2V7c0-1-1-2-2-2zm0 16H8V7h11v14z"/></svg></slot></button>
@@ -197,7 +197,7 @@ class ShareButton extends HTMLElement {
       </div>
       <div class="buttons">
         <slot name="buttons"></slot>
-      </div>`;
+      </div><!--endcompress-->`;
 
     fragment.appendChild(styles);
     fragment.appendChild(button);
