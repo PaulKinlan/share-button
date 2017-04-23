@@ -1,7 +1,7 @@
 {
   "name": "sharebutton",
   "main": "share-button.js",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/paulkinlan/share-button.git"
@@ -12,10 +12,6 @@
     "url": "https://github.com/paulkinlan/share-button/issues"
   },
   "homepage": "https://github.com/paulkinlan/share-button#readme",
-  "files": [
-    "share-button.js",
-    "share-button.html"
-  ],
   "devDependencies": {
     "babili": "0.0.12",
     "clean-css": "^4.0.12",
